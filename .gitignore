@@ -56,3 +56,4 @@ htmlcov/
 
 # Local notebooks and debug outputs
 *.ipynb
+.python-version
