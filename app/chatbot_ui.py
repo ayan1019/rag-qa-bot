@@ -1,21 +1,20 @@
-# app/chatbot_ui.py
+# chatbot_app.py
+
+from app.index_builder import get_index
+from llama_index.core.query_engine import RetrieverQueryEngine
 import streamlit as st
-from app.index_builder import build_index
-from app.query_engine import create_query_engine
 
-def run_chatbot():
-    st.set_page_config(page_title="📘 RAG QA Chatbot", layout="centered")
-    st.title("🤖 Business FAQ Chatbot")
+# Get the index
+index = get_index()
 
-    query = st.text_input("Ask a question:", "")
+# Build retriever and query engine
+retriever = index.as_retriever()
+query_engine = RetrieverQueryEngine(retriever=retriever)
 
-    if "query_engine" not in st.session_state:
-        index = build_index("business_faq.pdf")
-        st.session_state.query_engine = create_query_engine(index)
+# UI
+st.title("📄 RAG QA Chatbot")
 
-    if st.button("Ask"):
-        if query.strip():
-            response = st.session_state.query_engine.query(query)
-            st.success(f"**Answer:** {response}")
-        else:
-            st.warning("Please enter a valid question.")
+question = st.text_input("Ask a question:")
+if st.button("Ask") and question:
+    response = query_engine.query(question)
+    st.markdown(f"**Answer:** {response}")
