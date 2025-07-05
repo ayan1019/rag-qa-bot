@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+env310/
+.venv/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Streamlit cache
+.streamlit/
+.stfolder/
+
+# VS Code settings
+.vscode/
+
+# Python environment files
+*.egg-info/
+*.egg
+*.pkl
+*.db
+
+# Logs and output
+*.log
+*.out
+*.tmp
+
+# dotenv environment variables
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PDF/Document outputs (optional if they're generated)
+*.pdf
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# mypy / coverage / test artifacts
+.mypy_cache/
+.coverage
+htmlcov/
+.tox/
+
+# pytest
+.pytest_cache/
+
+# Local notebooks and debug outputs
+*.ipynb
